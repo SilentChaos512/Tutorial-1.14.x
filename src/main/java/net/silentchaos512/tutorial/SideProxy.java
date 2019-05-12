@@ -5,6 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.silentchaos512.tutorial.command.SimpleGiveCommand;
 import net.silentchaos512.tutorial.init.ModBlocks;
 import net.silentchaos512.tutorial.init.ModItems;
 
@@ -61,6 +62,7 @@ class SideProxy {
      */
     @SubscribeEvent
     public void serverStarting(FMLServerStartingEvent event) {
+        SimpleGiveCommand.register(event.getCommandDispatcher());
     }
 
     /**
