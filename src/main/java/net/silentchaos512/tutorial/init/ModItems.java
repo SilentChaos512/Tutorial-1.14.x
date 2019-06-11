@@ -42,7 +42,12 @@ public final class ModItems {
         BLOCKS_TO_REGISTER.forEach(ModItems::register);
 
         // Items
-        // Nothing yet
+
+        // See the comment in ModBlocks, this is the same concept
+        for (Gem gem : Gem.values()) {
+            // ruby, sapphire
+            register(gem.getName(), gem.getGemItem());
+        }
     }
 
     /**

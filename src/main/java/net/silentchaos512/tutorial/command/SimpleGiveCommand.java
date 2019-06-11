@@ -63,7 +63,8 @@ public final class SimpleGiveCommand {
                 // Needs permission level 2
                 .requires(source -> source.hasPermissionLevel(2))
                 // The target players (required argument)
-                .then(Commands.argument("targets", EntityArgument.multiplePlayers())
+                // Use EntityArgument.multiplePlayers() if using older mappings
+                .then(Commands.argument("targets", EntityArgument.players())
                         // The item ID (required argument)
                         .then(Commands.argument("itemID", ResourceLocationArgument.resourceLocation())
                                 // Make suggestions for the item IDs

@@ -5,7 +5,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -59,6 +58,22 @@ public final class ModBlocks {
                 .hardnessAndResistance(1.5f, 6f)
                 .sound(SoundType.STONE)
         ));
+
+        // When registering enum items, we iterate over all enum values and register blocks in the
+        // loop. Use getName() when creating the block's name, and the appropriate block getter.
+        // Note I use two loops here. This affects the order the blocks are registered and
+        // displayed. You could use one loop, but I prefer to group by block type. A single loop
+        // would group by gem.
+        for (Gem gem : Gem.values()) {
+            // Names will be: ruby_block, sapphire_block
+            // This comment is, of course, not necessary, so you can remove it
+            register(gem.getName() + "_block", gem.getStorageBlock());
+        }
+
+        for (Gem gem : Gem.values()) {
+            // ruby_ore, sapphire_ore
+            register(gem.getName() + "_ore", gem.getOreBlock());
+        }
     }
 
     /**
@@ -70,7 +85,7 @@ public final class ModBlocks {
      * @return The block
      */
     private static <T extends Block> T register(String name, T block) {
-        ItemBlock item = new ItemBlock(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS));
+        ItemBlock item = new ItemBlock(block, new Item.Properties().group(TutorialMod.ITEM_GROUP));
         return register(name, block, item);
     }
 

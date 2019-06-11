@@ -1,3 +1,10 @@
 {
-    "block.tutorial.blue_stone": "Blue Stone"
+    "block.tutorial.blue_stone": "Blue Stone",
+    "block.tutorial.ruby_block": "Block of Ruby",
+    "block.tutorial.sapphire_block": "Block of Sapphire",
+    "block.tutorial.ruby_ore": "Ruby Ore",
+    "block.tutorial.sapphire_ore": "Sapphire Ore",
+    "item.tutorial.ruby": "Ruby",
+    "item.tutorial.sapphire": "Sapphire",
+    "itemGroup.tutorial": "Tutorial Mod Item Group"
 }
