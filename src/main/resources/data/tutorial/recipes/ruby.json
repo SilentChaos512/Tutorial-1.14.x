@@ -1,0 +1,13 @@
+{
+    "type": "crafting_shapeless",
+    "group": "tutorial:gem",
+    "ingredients": [
+        {
+            "tag": "forge:storage_blocks/ruby"
+        }
+    ],
+    "result": {
+        "item": "tutorial:ruby",
+        "count": 9
+    }
+}

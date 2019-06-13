@@ -1,0 +1,13 @@
+{
+    "type": "crafting_shapeless",
+    "group": "tutorial:gem",
+    "ingredients": [
+        {
+            "tag": "forge:storage_blocks/sapphire"
+        }
+    ],
+    "result": {
+        "item": "tutorial:sapphire",
+        "count": 9
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "crafting_shaped",
+    "group": "tutorial:gem_block",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "tag": "forge:gems/ruby"
+        }
+    },
+    "result": {
+        "item": "tutorial:ruby_block",
+        "count": 1
+    }
+}
