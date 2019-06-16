@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.BlockItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -85,7 +85,7 @@ public final class ModBlocks {
      * @return The block
      */
     private static <T extends Block> T register(String name, T block) {
-        ItemBlock item = new ItemBlock(block, new Item.Properties().group(TutorialMod.ITEM_GROUP));
+        BlockItem item = new BlockItem(block, new Item.Properties().group(TutorialMod.ITEM_GROUP));
         return register(name, block, item);
     }
 
@@ -105,7 +105,7 @@ public final class ModBlocks {
      * @param <T>   The class of the block
      * @return The block
      */
-    private static <T extends Block> T register(String name, T block, @Nullable ItemBlock item) {
+    private static <T extends Block> T register(String name, T block, @Nullable BlockItem item) {
         ResourceLocation id = TutorialMod.getId(name);
         block.setRegistryName(id);
         ForgeRegistries.BLOCKS.register(block);

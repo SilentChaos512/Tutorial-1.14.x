@@ -1,7 +1,7 @@
 package net.silentchaos512.tutorial.init;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,7 +22,7 @@ public final class ModItems {
      * You could probably clear this map after registering everything. It would free up a little
      * memory, but you would only be removing pointers.
      */
-    static final Map<String, ItemBlock> BLOCKS_TO_REGISTER = new LinkedHashMap<>();
+    static final Map<String, BlockItem> BLOCKS_TO_REGISTER = new LinkedHashMap<>();
 
     private ModItems() {}
 

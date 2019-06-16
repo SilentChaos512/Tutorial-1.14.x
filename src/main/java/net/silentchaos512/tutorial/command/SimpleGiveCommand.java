@@ -8,16 +8,16 @@ import net.minecraft.command.Commands;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.command.arguments.EntityArgument;
 import net.minecraft.command.arguments.ResourceLocationArgument;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collection;
@@ -102,14 +102,14 @@ public final class SimpleGiveCommand {
      * @param count   The number of the item to give
      * @return Size of {@code targets}, or 0 if the item ID is invalid
      */
-    private static int giveItem(CommandSource source, ResourceLocation itemId, Collection<EntityPlayerMP> targets, int count) {
+    private static int giveItem(CommandSource source, ResourceLocation itemId, Collection<ServerPlayerEntity> targets, int count) {
         Item item = ForgeRegistries.ITEMS.getValue(itemId);
         if (item == null) {
-            source.sendErrorMessage(new TextComponentString("Item '" + itemId + "' does not exist?"));
+            source.sendErrorMessage(new StringTextComponent("Item '" + itemId + "' does not exist?"));
             return 0;
         }
 
-        for (EntityPlayerMP player : targets) {
+        for (ServerPlayerEntity player : targets) {
             int remainingCount = count;
 
             while (remainingCount > 0) {
@@ -119,7 +119,7 @@ public final class SimpleGiveCommand {
                 boolean addedToInventory = player.inventory.addItemStackToInventory(stack);
                 if (addedToInventory && stack.isEmpty()) {
                     stack.setCount(1);
-                    EntityItem entityItem = player.dropItem(stack, false);
+                    ItemEntity entityItem = player.dropItem(stack, false);
                     if (entityItem != null) {
                         entityItem.makeFakeItem();
                     }
@@ -129,9 +129,9 @@ public final class SimpleGiveCommand {
                             SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS,
                             0.2F,
                             ((player.getRNG().nextFloat() - player.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
-                    player.inventoryContainer.detectAndSendChanges();
+                    player.container.detectAndSendChanges();
                 } else {
-                    EntityItem entityItem = player.dropItem(stack, false);
+                    ItemEntity entityItem = player.dropItem(stack, false);
                     if (entityItem != null) {
                         entityItem.setNoPickupDelay();
                         entityItem.setOwnerId(player.getUniqueID());
@@ -142,9 +142,9 @@ public final class SimpleGiveCommand {
 
         ITextComponent itemText = new ItemStack(item, count).getTextComponent();
         if (targets.size() == 1) {
-            source.sendFeedback(new TextComponentTranslation("commands.give.success.single", count, itemText, targets.iterator().next().getDisplayName()), true);
+            source.sendFeedback(new TranslationTextComponent("commands.give.success.single", count, itemText, targets.iterator().next().getDisplayName()), true);
         } else {
-            source.sendFeedback(new TextComponentTranslation("commands.give.success.single", count, itemText, targets.size()), true);
+            source.sendFeedback(new TranslationTextComponent("commands.give.success.single", count, itemText, targets.size()), true);
         }
 
         return targets.size();

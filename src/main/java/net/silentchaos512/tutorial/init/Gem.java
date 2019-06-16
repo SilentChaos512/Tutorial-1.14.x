@@ -36,7 +36,7 @@ public enum Gem {
     Gem() {
         // Note that this::getGemItem is a method reference. The gem item should not be created
         // until later. Conveniently, the method signature matches IItemProvider.
-        oreBlock = new LazyLoadBase<>(() -> new OreBlock(this::getGemItem));
+        oreBlock = new LazyLoadBase<>(OreBlock::new);
         storageBlock = new LazyLoadBase<>(() -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5, 6).sound(SoundType.METAL)));
         gemItem = new LazyLoadBase<>(() -> new Item(new Item.Properties().group(TutorialMod.ITEM_GROUP)));
     }
