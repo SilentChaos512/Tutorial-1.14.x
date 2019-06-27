@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "tag": "forge:ores/sapphire"
+    },
+    "result": "tutorial:sapphire",
+    "experience": 0.75,
+    "cookingTime": 100
+}

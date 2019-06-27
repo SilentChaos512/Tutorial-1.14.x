@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "tutorial:blue_stone"
+        }
+    },
+    "result": {
+        "item": "tutorial:blue_stone_stairs",
+        "count": 4
+    }
+}

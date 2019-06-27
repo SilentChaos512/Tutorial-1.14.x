@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "tutorial:blue_stone"
+    },
+    "result": "tutorial:blue_stone_wall",
+    "count": 1
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "tutorial:block/blue_stone_slab" },
+        "type=top": { "model": "tutorial:block/blue_stone_slab_top" },
+        "type=double": { "model": "tutorial:block/blue_stone" }
+    }
+}

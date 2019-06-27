@@ -1,7 +1,6 @@
 package net.silentchaos512.tutorial.init;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
@@ -9,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.silentchaos512.tutorial.TutorialMod;
+import net.silentchaos512.tutorial.block.TutorialStairsBlock;
 
 import javax.annotation.Nullable;
 
@@ -35,6 +35,9 @@ import javax.annotation.Nullable;
  */
 public final class ModBlocks {
     public static Block blueStone;
+    public static WallBlock blueStoneWall;
+    public static SlabBlock blueStoneSlab;
+    public static StairsBlock blueStoneStairs;
 
     private ModBlocks() {}
 
@@ -58,6 +61,9 @@ public final class ModBlocks {
                 .hardnessAndResistance(1.5f, 6f)
                 .sound(SoundType.STONE)
         ));
+        blueStoneWall = register("blue_stone_wall", new WallBlock(Block.Properties.from(blueStone)));
+        blueStoneSlab = register("blue_stone_slab", new SlabBlock(Block.Properties.from(blueStone)));
+        blueStoneStairs = register("blue_stone_stairs", new TutorialStairsBlock(blueStone.getDefaultState(), Block.Properties.from(blueStone)));
 
         // When registering enum items, we iterate over all enum values and register blocks in the
         // loop. Use getName() when creating the block's name, and the appropriate block getter.
