@@ -5,6 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.silentchaos512.tutorial.client.ColorHandlers;
 import net.silentchaos512.tutorial.command.SimpleGiveCommand;
 import net.silentchaos512.tutorial.init.ModBlocks;
 import net.silentchaos512.tutorial.init.ModItems;
@@ -72,6 +73,7 @@ class SideProxy {
     static class Client extends SideProxy {
         Client() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ColorHandlers::registerItemColor);
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {

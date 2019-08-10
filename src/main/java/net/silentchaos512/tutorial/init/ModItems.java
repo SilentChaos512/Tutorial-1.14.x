@@ -5,7 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.silentchaos512.tutorial.TutorialMod;
+import net.silentchaos512.tutorial.item.BackpackItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,6 +17,8 @@ import java.util.Map;
  * ModBlocks}, so I won't repeat myself here. Check ModBlocks' Javadoc for more details.
  */
 public final class ModItems {
+    public static final BackpackItem backpack = new BackpackItem();
+
     /**
      * Stores block items which need to be registered. I am using a {@link LinkedHashMap} so the
      * items will be registered in the order they were created.
@@ -42,6 +46,7 @@ public final class ModItems {
         BLOCKS_TO_REGISTER.forEach(ModItems::register);
 
         // Items
+        register("backpack", backpack);
 
         // See the comment in ModBlocks, this is the same concept
         for (Gem gem : Gem.values()) {
