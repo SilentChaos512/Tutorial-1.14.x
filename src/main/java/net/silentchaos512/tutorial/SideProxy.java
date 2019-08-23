@@ -1,5 +1,7 @@
 package net.silentchaos512.tutorial;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.*;
@@ -9,6 +11,7 @@ import net.silentchaos512.tutorial.client.ColorHandlers;
 import net.silentchaos512.tutorial.command.SimpleGiveCommand;
 import net.silentchaos512.tutorial.init.ModBlocks;
 import net.silentchaos512.tutorial.init.ModItems;
+import net.silentchaos512.tutorial.init.ModRecipes;
 
 /**
  * SideProxy allows client and server code to be separated, while executing common code on both
@@ -21,11 +24,13 @@ class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Block.class, ModBlocks::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Item.class, ModItems::registerAll);
 
         // Other events
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModRecipes.init();
     }
 
     /**

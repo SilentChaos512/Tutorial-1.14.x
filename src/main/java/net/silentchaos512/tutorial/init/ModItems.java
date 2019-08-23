@@ -37,11 +37,6 @@ public final class ModItems {
      * @param event The event
      */
     public static void registerAll(RegistryEvent.Register<Item> event) {
-        // Verify we are getting the correct registry event. If not, just silently return.
-        if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName())) {
-            return;
-        }
-
         // Blocks
         BLOCKS_TO_REGISTER.forEach(ModItems::register);
 

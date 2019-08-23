@@ -49,11 +49,6 @@ public final class ModBlocks {
      * @param event The event
      */
     public static void registerAll(RegistryEvent.Register<Block> event) {
-        // Verify we are getting the correct registry event. If not, just silently return.
-        if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName())) {
-            return;
-        }
-
         // This could be on one line, I typically break before each chained method call on
         // Block.Properties. You can break up the line however you like. If extending a block class,
         // I usually create the Properties in the new class' constructor, instead of here.
