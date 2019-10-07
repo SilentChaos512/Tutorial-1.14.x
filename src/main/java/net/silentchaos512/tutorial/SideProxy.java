@@ -1,6 +1,7 @@
 package net.silentchaos512.tutorial;
 
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.silentchaos512.tutorial.client.ColorHandlers;
 import net.silentchaos512.tutorial.command.SimpleGiveCommand;
 import net.silentchaos512.tutorial.init.ModBlocks;
+import net.silentchaos512.tutorial.init.ModContainerTypes;
 import net.silentchaos512.tutorial.init.ModItems;
 import net.silentchaos512.tutorial.init.ModRecipes;
 
@@ -25,6 +27,7 @@ class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Block.class, ModBlocks::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(ContainerType.class, ModContainerTypes::registerContainerTypes);
         FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(Item.class, ModItems::registerAll);
 
         // Other events
@@ -79,6 +82,7 @@ class SideProxy {
         Client() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
             FMLJavaModLoadingContext.get().getModEventBus().addListener(ColorHandlers::registerItemColor);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ModContainerTypes::registerScreens);
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
